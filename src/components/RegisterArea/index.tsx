@@ -1,3 +1,5 @@
+'use client';
+
 import { FormDataType } from '@/app/page';
 import { VStack } from '@chakra-ui/react';
 import { RegisterAge } from './RegisterAge';
