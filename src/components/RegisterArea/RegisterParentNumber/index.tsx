@@ -9,24 +9,23 @@ import {
   NumberInputStepper,
 } from '@chakra-ui/react';
 
-interface RegisterUserAgeProps {
-  userAge: FormDataType['userAge'];
+interface RegisterParentNumberProps {
+  parentNumber: FormDataType['parentNumber'];
   handleChange: (valueAsString: string, valueAsNumber: number) => void;
 }
 
-export const RegisterAge = ({
-  userAge,
+export const RegisterParentNumber = ({
+  parentNumber,
   handleChange,
-}: RegisterUserAgeProps) => {
+}: RegisterParentNumberProps) => {
   return (
     <FormControl isRequired>
-      <FormLabel>How Old Are You</FormLabel>
+      <FormLabel>How Many Parents Do You Accompany</FormLabel>
       <NumberInput
-        defaultValue={userAge}
+        defaultValue={parentNumber}
         min={0}
-        max={100}
-        value={userAge}
-        name='userAge'
+        max={2}
+        value={parentNumber}
         onChange={handleChange}
       >
         <NumberInputField />
