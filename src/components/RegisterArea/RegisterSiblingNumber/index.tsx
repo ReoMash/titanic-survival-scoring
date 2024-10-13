@@ -11,13 +11,16 @@ import {
 
 interface RegisterSiblingNumberProps {
   siblingNumber: FormDataType['siblingNumber'];
-  handleChange: (valueAsString: string, valueAsNumber: number) => void;
+  handleChange: (valueAsNumber: number) => void;
 }
 
 export const RegisterSiblingNumber = ({
   siblingNumber,
   handleChange,
 }: RegisterSiblingNumberProps) => {
+  const handleNumberInputChange = (value: string) => {
+    handleChange(Number(value));
+  };
   return (
     <FormControl isRequired>
       <FormLabel>How Many Siblings Do You Accompany</FormLabel>
@@ -26,7 +29,7 @@ export const RegisterSiblingNumber = ({
         min={0}
         max={10}
         value={siblingNumber}
-        onChange={handleChange}
+        onChange={handleNumberInputChange}
       >
         <NumberInputField />
         <NumberInputStepper>

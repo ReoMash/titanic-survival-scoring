@@ -18,11 +18,10 @@ interface RegisterAreaProps {
 }
 
 export const RegisterArea = ({ formData, setFormData }: RegisterAreaProps) => {
-  // handleChangeの修正：数値型も扱えるようにする
   const handleChange = (name: keyof FormDataType, value: string | number) => {
     setFormData({
-      ...formData, // 現在のフォームデータを維持
-      [name]: value, // 変更されたフィールドの値を更新
+      ...formData,
+      [name]: value,
     });
   };
 
@@ -35,16 +34,16 @@ export const RegisterArea = ({ formData, setFormData }: RegisterAreaProps) => {
         handleChange={(e) => handleChange('userName', e.target.value)}
       />
       <RegisterAge
-        userAge={formData.userAge}
-        handleChange={(valueAsNumber) => handleChange('userAge', valueAsNumber)}
+        age={formData.age}
+        handleChange={(valueAsNumber) => handleChange('age', valueAsNumber)}
       />
       <RegisterSex
-        userSex={formData.userSex}
-        handleChange={(valueAsString) => handleChange('userSex', valueAsString)}
+        sex={formData.sex}
+        handleChange={(valueAsString) => handleChange('sex', valueAsString)}
       />
       <RegisterPClass
         pClass={formData.pClass}
-        handleChange={(valueAsString) => handleChange('pClass', valueAsString)}
+        handleChange={(valueAsNumber) => handleChange('pClass', valueAsNumber)}
       />
       <RegisterParentNumber
         parentNumber={formData.parentNumber}

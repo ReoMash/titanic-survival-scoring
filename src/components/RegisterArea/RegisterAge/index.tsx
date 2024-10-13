@@ -9,25 +9,25 @@ import {
   NumberInputStepper,
 } from '@chakra-ui/react';
 
-interface RegisterUserAgeProps {
-  userAge: FormDataType['userAge'];
-  handleChange: (valueAsString: string, valueAsNumber: number) => void;
+interface RegisterageProps {
+  age: FormDataType['age'];
+  handleChange: (valueAsNumber: number) => void;
 }
 
-export const RegisterAge = ({
-  userAge,
-  handleChange,
-}: RegisterUserAgeProps) => {
+export const RegisterAge = ({ age, handleChange }: RegisterageProps) => {
+  const handleNumberInputChange = (value: string) => {
+    handleChange(Number(value));
+  };
   return (
     <FormControl isRequired>
       <FormLabel>How Old Are You</FormLabel>
       <NumberInput
-        defaultValue={userAge}
+        defaultValue={age}
         min={0}
         max={100}
-        value={userAge}
-        name='userAge'
-        onChange={handleChange}
+        value={age}
+        name='age'
+        onChange={handleNumberInputChange}
       >
         <NumberInputField />
         <NumberInputStepper>

@@ -21,9 +21,9 @@ export const RegisterEmbarked = ({
       <FormLabel>Choose Your Departure Port</FormLabel>
       <RadioGroup value={embarked} onChange={handleChange}>
         <HStack>
-          <Radio value='C'>Cherbourg</Radio>
-          <Radio value='Q'>Queenstown</Radio>
-          <Radio value='S'>Southampton</Radio>
+          <Radio value='c'>Cherbourg</Radio>
+          <Radio value='q'>Queenstown</Radio>
+          <Radio value='s'>Southampton</Radio>
         </HStack>
       </RadioGroup>
     </FormControl>

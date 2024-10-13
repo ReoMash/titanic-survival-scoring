@@ -8,19 +8,15 @@ import {
 } from '@chakra-ui/react';
 
 interface RegisterSexProps {
-  userSex: FormDataType['userSex'];
+  sex: FormDataType['sex'];
   handleChange: (valueAsString: string) => void;
 }
 
-export const RegisterSex = ({ userSex, handleChange }: RegisterSexProps) => {
+export const RegisterSex = ({ sex, handleChange }: RegisterSexProps) => {
   return (
     <FormControl isRequired>
       <FormLabel>Your Gender Type</FormLabel>
-      <RadioGroup
-        value={userSex}
-        onChange={handleChange}
-        defaultValue={userSex}
-      >
+      <RadioGroup value={sex} onChange={handleChange} defaultValue={sex}>
         <HStack>
           <Radio value='male'>Male</Radio>
           <Radio value='female'>Female</Radio>

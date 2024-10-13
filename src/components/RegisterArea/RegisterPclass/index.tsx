@@ -9,26 +9,29 @@ import {
 
 interface RegisterPClassProps {
   pClass: FormDataType['pClass'];
-  handleChange: (valueAsString: string) => void;
+  handleChange: (valueAsNumber: number) => void;
 }
 
 export const RegisterPClass = ({
   pClass,
   handleChange,
 }: RegisterPClassProps) => {
+  const handleRadioChange = (value: string) => {
+    handleChange(Number(value));
+  };
   return (
     <FormControl isRequired>
       <FormLabel>Your Social Rank</FormLabel>
       <RadioGroup
         name='pClass'
-        value={pClass}
-        onChange={handleChange}
-        defaultValue={pClass}
+        value={String(pClass)}
+        onChange={handleRadioChange}
+        defaultValue={String(pClass)}
       >
         <HStack>
-          <Radio value='upper'>Upper Class</Radio>
-          <Radio value='middle'>Middle Class</Radio>
-          <Radio value='working'>Working Class</Radio>
+          <Radio value='1'>Upper Class</Radio>
+          <Radio value='2'>Middle Class</Radio>
+          <Radio value='3'>Working Class</Radio>
         </HStack>
       </RadioGroup>
     </FormControl>

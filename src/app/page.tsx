@@ -1,37 +1,46 @@
 'use client';
 import { RegisterArea } from '@/components/RegisterArea';
+import { ResultModal } from '@/components/ResultModal';
 import { Button, VStack } from '@chakra-ui/react';
+import axios from 'axios';
 import { useState } from 'react';
 
 export type FormDataType = {
   userName: string;
-  userAge: number;
-  userSex: 'male' | 'female';
-  pClass: 'upper' | 'middle' | 'working';
+  age: number;
+  sex: 'male' | 'female';
+  pClass: number;
   parentNumber: number;
   childrenNumber: number;
   siblingNumber: number;
   spounseNumber: number;
-  embarked: 'C' | 'Q' | 'S';
+  embarked: 'c' | 'q' | 's';
 };
 
 export default function Home() {
   const [formData, setFormData] = useState<FormDataType>({
     userName: '',
-    userAge: 20,
-    userSex: 'male',
-    pClass: 'upper',
+    age: 20,
+    sex: 'male',
+    pClass: 1,
     parentNumber: 0,
     childrenNumber: 0,
     siblingNumber: 0,
     spounseNumber: 0,
-    embarked: 'C',
+    embarked: 'c',
   });
+  const [prediction, setPrediction] = useState<number>();
+  const handleSubmit = async (e: React.FormEvent<HTMLDivElement>) => {
+    e.preventDefault();
 
-  const handleSubmit = () => {
     // TODO 登録処理
-    console.log('hoge');
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/predict`,
+      { formData }
+    );
+    setPrediction(Math.floor(response.data.prediction * 100 * 100) / 100);
   };
+
   return (
     <VStack
       as={'form'}
@@ -44,6 +53,7 @@ export default function Home() {
       <Button type='submit' colorScheme='blue'>
         Submit
       </Button>
+      {prediction && <ResultModal prediction={prediction} />}
     </VStack>
   );
 }

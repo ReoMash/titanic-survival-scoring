@@ -11,13 +11,16 @@ import {
 
 interface RegisterParentNumberProps {
   parentNumber: FormDataType['parentNumber'];
-  handleChange: (valueAsString: string, valueAsNumber: number) => void;
+  handleChange: (valueAsNumber: number) => void;
 }
 
 export const RegisterParentNumber = ({
   parentNumber,
   handleChange,
 }: RegisterParentNumberProps) => {
+  const handleNumberInputChange = (value: string) => {
+    handleChange(Number(value));
+  };
   return (
     <FormControl isRequired>
       <FormLabel>How Many Parents Do You Accompany</FormLabel>
@@ -26,7 +29,7 @@ export const RegisterParentNumber = ({
         min={0}
         max={2}
         value={parentNumber}
-        onChange={handleChange}
+        onChange={handleNumberInputChange}
       >
         <NumberInputField />
         <NumberInputStepper>
