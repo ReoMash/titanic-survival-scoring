@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: change directory
+        run: cd web
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -81,7 +83,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs
+          path: ./web/docs
 
   # Deployment job
   deploy:
